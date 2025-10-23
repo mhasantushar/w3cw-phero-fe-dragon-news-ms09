@@ -3,7 +3,9 @@ import RootLayout from "../layouts/RootLayout";
 import NewsLayout from "../layouts/NewsLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import HomePage from "../pages/HomePage";
-import CategNewsPage from "../pages/CategNewsPage";
+import HomeCategPage from "../pages/HomeCategPage";
+
+// const newsDetailsURL = 'https://raw.githubusercontent.com/mhasantushar/w3educ-bin/refs/heads/main/json/w3cw-phero-fe-dragon-news-ms09/news.json'
 
 const router = createBrowserRouter([
   {
@@ -15,8 +17,9 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/category/:catid",
-        element: <CategNewsPage />,
+        path: "/category/:categId",
+        element: <HomeCategPage />,
+        loader: ()=> fetch('../news.json')
       },
     ],
   },

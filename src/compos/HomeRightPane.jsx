@@ -1,9 +1,14 @@
-import React from 'react';
+import React from "react";
+import RPaneSocialLogin from "./RPaneSocialLogin";
+import RPaneSocialLinks from "./RPaneSocialLinks";
+import RPaneQZoneGallery from "./RPaneQZoneGallery";
 
 const HomeRightPane = () => {
   return (
     <div>
-      Home Right Pane
+      <RPaneSocialLogin />
+      <RPaneSocialLinks />
+      <RPaneQZoneGallery/>
     </div>
   );
 };

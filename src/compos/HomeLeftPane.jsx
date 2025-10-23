@@ -1,10 +1,13 @@
-import React from 'react';
-import NewsCategs from './NewsCategs';
+import React, { Suspense } from "react";
+import LPaneNewsCategs from "./LPaneNewsCategs";
+import { BarLoader } from "react-spinners";
 
 const HomeLeftPane = () => {
   return (
     <div>
-      <NewsCategs/>
+      <Suspense  fallback={<BarLoader />}>
+        <LPaneNewsCategs />
+      </Suspense>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router";
-import RootHeader from "../compos/RootHeader";
-import LatestNewsBar from "../compos/LatestNewsBar";
-import RootNavigBar from "../compos/RootNavigBar";
+import RootHeader from "../compos/headers/RootHeader";
+import LatestNewsBar from "../compos/headers/LatestNewsBar";
+import RootNavigBar from "../compos/headers/RootNavigBar";
 import HomeLeftPane from "../compos/HomeLeftPane";
 import HomeRightPane from "../compos/HomeRightPane";
 
@@ -19,12 +19,12 @@ const RootLayout = () => {
         </nav>
       </header>
 
-      <main className="w-11/12 mx-auto my-16 grid grid-cols-12">
-        <aside className="col-span-3">
+      <main className="w-11/12 mx-auto my-16 grid grid-cols-12 gap-4">
+        <aside className="col-span-2">
           <HomeLeftPane />
         </aside>
 
-        <section className="main-pane col-span-6">
+        <section className="main-pane col-span-7">
           <Outlet />
         </section>
 

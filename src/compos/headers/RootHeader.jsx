@@ -1,5 +1,5 @@
 import React from "react";
-import logoHeader from "../assets/logo.png";
+import logoHeader from "../../assets/logo.png";
 import { format } from "date-fns";
 
 const RootHeader = () => {
