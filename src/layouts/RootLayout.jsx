@@ -1,12 +1,15 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import RootHeader from "../compos/headers/RootHeader";
 import LatestNewsBar from "../compos/headers/LatestNewsBar";
 import RootNavigBar from "../compos/headers/RootNavigBar";
 import HomeLeftPane from "../compos/HomeLeftPane";
 import HomeRightPane from "../compos/HomeRightPane";
+import ShowLoadingDot from "../compos/ShowLoadingDot";
 
 const RootLayout = () => {
+  const { pageState } = useNavigation();
+
   return (
     <div>
       <header>
@@ -25,7 +28,7 @@ const RootLayout = () => {
         </aside>
 
         <section className="main-pane col-span-7">
-          <Outlet />
+          {pageState == "loading" ? <ShowLoadingDot /> : <Outlet />}
         </section>
 
         <aside className="col-span-3  sticky top-10 h-fit">

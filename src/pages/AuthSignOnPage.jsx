@@ -1,16 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { LuEye, LuEyeClosed } from "react-icons/lu";
 import { toast } from "react-toastify";
 import AuthContext from "../contexts/AuthContext";
 
 const AuthSignOnPage = () => {
   const navigate = useNavigate();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
   const {
+    loggedInUser,
     setLoggedInUser,
     doCreateUserWithEmailAndPassword,
     doUpdateProfile,
     doSendEmailVerification,
-    doSignOut
+    doSignOut,
   } = useContext(AuthContext);
 
   const handleUserCreation = (e) => {
@@ -44,21 +48,28 @@ const AuthSignOnPage = () => {
         toast.success(`Account created with email ${user.email}`);
         setLoggedInUser(user);
         e.target.reset();
+        console.log(loggedInUser);
 
         // user account creatd, so updating user's name and photourl
         doUpdateProfile(vName, vPhoto)
           .then(() => {
-            // can show confirmation here, but not feeling necessary
+            // the builtin fuction wil update firebase db, so came up with th following line that updates the context..
+            setLoggedInUser({
+              ...loggedInUser,
+              displayName: vName,
+              photoURL: vPhoto,
+            });
+            console.log(loggedInUser);
           })
           .catch((err) => {
             toast.warn(
               `Account created, but additional info not updated! ${err.message}.`
             );
           });
-          // updating user name and phot url done
+        // updating user name and phot url done
 
-          // now, sending a verification email..
-          doSendEmailVerification()
+        // now, sending a verification email..
+        doSendEmailVerification()
           .then(() => {
             // const email = fbaseAuth.currentUser.email;
             toast.info(`Verification email sent to ${vMail}`);
@@ -76,7 +87,7 @@ const AuthSignOnPage = () => {
             // forcing sign out as the process seems to auto signs in
             doSignOut().then(() => {
               setLoggedInUser(null);
-            });            
+            });
           });
         // sending verification email done
       })
@@ -123,17 +134,25 @@ const AuthSignOnPage = () => {
             name="fmail"
           />
 
-          <label className="label">Password</label>
-          <input
-            type="password"
-            className="input"
-            placeholder="Password"
-            required
-            name="fpass"
-          />
+          <div className="relative">
+            <label className="label">Password</label>
+            <input
+              type={passwordVisible ? "text" : "password"}
+              className="input"
+              placeholder="Password"
+              required
+              name="fpass"
+            />
+            <span
+              onClick={() => setPasswordVisible(!passwordVisible)}
+              className="top-8 right-2 z-50 absolute cursor-pointer"
+            >
+              {passwordVisible ? <LuEye /> : <LuEyeClosed />}
+            </span>
+          </div>
 
           <button type="submit" className="btn btn-neutral mt-4">
-            Login
+            Create Account
           </button>
         </fieldset>
         <p className="text-center my-6 text-primary">

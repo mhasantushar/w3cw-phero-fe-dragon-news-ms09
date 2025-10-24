@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { Navigate, useLocation } from "react-router";
-import { HashLoader } from "react-spinners";
 import ShowLoadingHash from "../compos/ShowLoadingHash";
 
 const PrivateRouter = ({ children }) => {

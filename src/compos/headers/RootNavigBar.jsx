@@ -51,9 +51,13 @@ const RootNavigBar = () => {
       {pageIsLoading ? (
         <BarLoader color={"#403F3F"} />
       ) : (
-        <div className="login-btn flex gap-4">
+        <div className="login-btn flex gap-4 justify-center items-center ">
           <figure>
-            <img src={logoUser} alt="User Icon" />
+            <img
+              className="w-12 rounded-full"
+              src={`${loggedInUser ? loggedInUser.photoURL : logoUser}`}
+              alt="User Icon"
+            />
           </figure>
           {loggedInUser ? (
             <button

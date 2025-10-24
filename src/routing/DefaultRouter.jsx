@@ -7,12 +7,14 @@ import AuthSignInPage from "../pages/AuthSignInPage";
 import AuthSignOnPage from "../pages/AuthSignOnPage";
 import NewsDetailsPage from "../pages/NewsDetailsPage";
 import PrivateRouter from "./PrivateRouter";
+import ShowLoadingCircle from "../compos/ShowLoadingCircle";
+import ShowLoadingHash from "../compos/ShowLoadingHash";
 
 const DefaultRouter = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // HydrateFallback:
+    HydrateFallbackElement: <ShowLoadingCircle />,
     children: [
       {
         index: true,
@@ -22,13 +24,19 @@ const DefaultRouter = createBrowserRouter([
         path: "/category/:categId",
         element: <HomeCategPage />,
         loader: () => fetch("../news.json"),
+        hydrateFallbackElement: <ShowLoadingHash />,
       },
     ],
   },
   {
     path: "/news/:nid",
-    element: <PrivateRouter><NewsDetailsPage /></PrivateRouter>,
+    element: (
+      <PrivateRouter>
+        <NewsDetailsPage />
+      </PrivateRouter>
+    ),
     loader: () => fetch("../news.json"),
+    hydrateFallbackElement: <ShowLoadingHash />,
   },
   {
     path: "/auth",
