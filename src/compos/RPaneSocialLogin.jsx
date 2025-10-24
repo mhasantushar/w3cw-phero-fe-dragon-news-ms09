@@ -5,9 +5,7 @@ import { FaGithub } from "react-icons/fa6";
 const RPaneSocialLogin = () => {
   return (
     <div className="mb-8">
-      <h2 className="font-semibold text-2xl text-accent py-4">
-        Login With
-      </h2>
+      <h2 className="font-semibold text-2xl text-accent py-4">Login With</h2>
 
       <div className="space-y-2">
         <button className="btn btn-outline btn-secondary w-full">

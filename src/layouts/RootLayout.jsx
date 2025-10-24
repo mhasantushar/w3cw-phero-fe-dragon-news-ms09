@@ -20,7 +20,7 @@ const RootLayout = () => {
       </header>
 
       <main className="w-11/12 mx-auto my-16 grid grid-cols-12 gap-4">
-        <aside className="col-span-2">
+        <aside className="col-span-2 sticky top-10 h-fit">
           <HomeLeftPane />
         </aside>
 
@@ -28,7 +28,7 @@ const RootLayout = () => {
           <Outlet />
         </section>
 
-        <aside className="col-span-3">
+        <aside className="col-span-3  sticky top-10 h-fit">
           <HomeRightPane />
         </aside>
       </main>

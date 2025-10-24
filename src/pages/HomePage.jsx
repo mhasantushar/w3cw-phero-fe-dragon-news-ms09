@@ -3,6 +3,7 @@ import { Navigate } from 'react-router';
 
 const HomePage = () => {
   return (
+    // <span>Homepage</span>
     <Navigate to='/category/1' />
   );
 };

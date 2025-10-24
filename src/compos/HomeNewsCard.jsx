@@ -32,9 +32,14 @@ const HomeNewsCard = ({ news }) => {
 
       {/* Title */}
       <div className="px-4 py-4">
-        <h2 className="text-lg font-bold text-primary  cursor-pointer">
-          {title}
-        </h2>
+        <Link
+          to={`/news/${id}`}
+          className="text-primary font-semibold cursor-pointer hover:underline"
+        >
+          <h2 className="text-lg font-bold text-primary  cursor-pointer">
+            {title}
+          </h2>
+        </Link>
       </div>
 
       {/* Image */}
@@ -52,7 +57,7 @@ const HomeNewsCard = ({ news }) => {
           <>
             {details.slice(0, 200)}...
             <Link
-              to={`/news-details/${id}`}
+              to={`/news/${id}`}
               className="text-primary font-semibold cursor-pointer hover:underline"
             >
               Read More
